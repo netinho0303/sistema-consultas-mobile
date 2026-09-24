@@ -1,4 +1,5 @@
-
+// Lista tocável. Substitui o TextInput de especialidade/médico.
+// Não grava storage. Só avisa o pai qual id foi escolhido.
 
 import React from "react";
 import { Pressable, Text, View } from "react-native";
