@@ -22,8 +22,8 @@ import {
   salvarConsultas,
 } from "../services/storage";
 import { styles } from "../styles/agendar.styles";
-import { Medico } from "../interfaces/medicos";
 import { Especialidade } from "../types/especialidades";
+import { Medico } from "../interfaces/medicos";
 import { Paciente } from "../types/pacientes";
 
 type AgendarProps = {
