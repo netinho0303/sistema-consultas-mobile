@@ -2,8 +2,8 @@
 // Lê src/data/banco.json e monta os objetos tipados.
 // Sem JSX. Sem AsyncStorage. O JSON é o catálogo inicial versionado no repositório.
 
-import { Medico } from "../interfaces/medicos";
-import { Especialidade } from "../types/especialidades";
+import { Especialidade } from "../types/especialidade";
+import { Medico } from "../interfaces/medico";
 import { Usuario } from "../types/usuario";
 import banco from "./banco.json";
 

@@ -14,6 +14,8 @@ import { StatusBar } from "expo-status-bar";
 import { ListaSelecao } from "../components";
 import { Papel } from "../types/papel";
 import { Usuario } from "../types/usuario";
+import { Especialidade } from "../types/especialidade";
+import { Medico } from "../interfaces/medico";
 import {
   obterEspecialidades,
   obterMedicos,
@@ -22,8 +24,6 @@ import {
   salvarUsuarios,
 } from "../services/storage";
 import { styles } from "../styles/auth.styles";
-import { Especialidade } from "../types/especialidades";
-import { Medico } from "../interfaces/medicos";
 
 type CadastroProps = {
   onEntrou: (usuario: Usuario) => void;
@@ -83,6 +83,10 @@ export default function Cadastro({ onEntrou, onIrLogin }: CadastroProps) {
     }
     if (papel === "medico" && !especialidadeId) {
       proximos.especialidade = "Escolha uma especialidade da lista.";
+    }
+
+    if (loginLimpo === "admin") {
+      proximos.login = "Este nome de usuário é reservado.";
     }
 
     const usuarios = await obterUsuarios();

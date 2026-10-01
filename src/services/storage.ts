@@ -1,14 +1,13 @@
-// Aula 24/09/2026
-// Persistência local. O catálogo inicial vem de banco.json via data.ts.
-// Novos cadastros e consultas ficam no AsyncStorage deste aparelho.
+// Aula 01/10/2026
+// Persistência local. Catálogo em banco.json. Runtime no AsyncStorage.
+// A senha do admin, se alterada, permanece no merge da versão 4.
 
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { ESPECIALIDADES, MEDICOS, USUARIOS_DEMO } from "../data/data";
 import { Consulta } from "../interfaces/consulta";
-
+import { Medico } from "../interfaces/medico";
+import { Especialidade } from "../types/especialidade";
 import { Usuario } from "../types/usuario";
-import { Especialidade } from "../types/especialidades";
-import { Medico } from "../interfaces/medicos";
 
 const KEYS = {
   VERSAO: "@consultas:versao",
@@ -19,7 +18,7 @@ const KEYS = {
   SESSAO: "@consultas:sessao",
 };
 
-const VERSAO_CATALOGO = "3";
+const VERSAO_CATALOGO = "4";
 
 export async function salvarEspecialidades(especialidades: Especialidade[]) {
   try {
@@ -156,7 +155,18 @@ function mesclarUsuarios(atuais: Usuario[]): Usuario[] {
   const extras = atuaisComLogin.filter(
     (usuario) => !USUARIOS_DEMO.some((demo) => demo.email === usuario.email)
   );
-  return [...USUARIOS_DEMO, ...extras];
+  const catalogo = USUARIOS_DEMO.map((demo) => {
+    const jaSalvo = atuaisComLogin.find((item) => item.email === demo.email);
+    if (demo.papel === "admin" && jaSalvo) {
+      return {
+        ...demo,
+        senha: jaSalvo.senha,
+        nome: jaSalvo.nome || demo.nome,
+      };
+    }
+    return demo;
+  });
+  return [...catalogo, ...extras];
 }
 
 export async function semearDadosIniciais() {

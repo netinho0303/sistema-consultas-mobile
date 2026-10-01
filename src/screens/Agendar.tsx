@@ -4,7 +4,9 @@
 import React, { useEffect, useState } from "react";
 import { Button, ScrollView, Text, View } from "react-native";
 import { StatusBar } from "expo-status-bar";
-
+import { ListaSelecao, SeletorData } from "../components";
+import { Medico } from "../interfaces/medico";
+import { Especialidade } from "../types/especialidade";
 import { Usuario } from "../types/usuario";
 import { montarConsulta } from "../utils/montarConsulta";
 import { validarDataAgenda } from "../utils/dataConsulta";
@@ -15,10 +17,6 @@ import {
   salvarConsultas,
 } from "../services/storage";
 import { styles } from "../styles/agendar.styles";
-import { Especialidade } from "../types/especialidades";
-import { Medico } from "../interfaces/medicos";
-import { ListaSelecao } from "../components";
-import SeletorData from "../components/SeletorData";
 
 type AgendarProps = {
   usuario: Usuario;

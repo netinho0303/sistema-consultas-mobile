@@ -1,3 +1,4 @@
+// Aula 17/09/2026
 // Home deixou de listar a clínica inteira e de abrir o Admin.
 // Agora recorta pelo usuário logado: paciente vê as suas; médico vê a agenda.
 

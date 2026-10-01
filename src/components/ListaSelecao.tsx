@@ -1,3 +1,4 @@
+// Aula 17/09/2026
 // Lista tocável. Substitui o TextInput de especialidade/médico.
 // Não grava storage. Só avisa o pai qual id foi escolhido.
 

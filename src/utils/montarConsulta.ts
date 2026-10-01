@@ -3,8 +3,8 @@
 // TypeScript confere se o retorno casa com a interface Consulta.
 
 import { Consulta } from "../interfaces/consulta";
-import { Medico } from "../interfaces/medicos";
-import { Paciente } from "../types/pacientes";
+import { Medico } from "../interfaces/medico";
+import { Paciente } from "../types/paciente";
 import { Usuario } from "../types/usuario";
 
 export function montarPacienteDaSessao(usuario: Usuario): Paciente {
